@@ -67,7 +67,7 @@ public class Manager implements Runnable {
 					System.out.println("you lost the game!!!!(enemy)");
 					break;
 				}
-				if (Drawing.enemy_l >= 10) {
+				if (Drawing.enemyCount >= 10) {
 					System.out.println("you win the game");
 					break;
 				}

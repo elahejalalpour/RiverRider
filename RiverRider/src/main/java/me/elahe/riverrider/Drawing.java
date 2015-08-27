@@ -39,9 +39,9 @@ public class Drawing extends JPanel {
 	public static int t;
 	public static int k = 1000;
 	public static int he = 3;
-	public static int enemy_l;
+	public static int enemyCount;
 
-	public static ArrayList<missiles> mis;
+	public static ArrayList<missiles> missiles;
 
 	public Drawing(int[][] map, int[][] p) {
 		Timer timer = new Timer(800, new ActionListener() {
@@ -51,12 +51,12 @@ public class Drawing extends JPanel {
 				missiles ma;
 				ma = new missiles(Drawing.he, 9);
 				new Thread(ma).start();
-				mis.add(ma);
+				missiles.add(ma);
 
 			}
 		});
 		timer.start();
-		mis = new ArrayList<>();
+		missiles = new ArrayList<>();
 
 		this.map = map;
 		this.p = p;
@@ -114,7 +114,7 @@ public class Drawing extends JPanel {
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		if (p[he][k - 1] != 1 && map[1][k - 1] != 9 && Manager.fuel > 0 && Drawing.enemy_l < 10) {
+		if (p[he][k - 1] != 1 && map[1][k - 1] != 9 && Manager.fuel > 0 && Drawing.enemyCount < 10) {
 
 			for (int i = 0; i < 7; i++) {
 				for (int j = k - 10; j < k; j++) {
@@ -135,11 +135,11 @@ public class Drawing extends JPanel {
 				}
 			}
 
-			for (missiles mi : mis) {
+			for (missiles mi : missiles) {
 				g2d.drawImage(missile, mi.xLocation * 64 + 28, mi.ylLocation * 64 - 10, 10, 64, this);
 				if (p[mi.xLocation][Drawing.k - 1 - mi.ylLocation + 1] == 1) {
 					p[mi.xLocation][Drawing.k - 1 - mi.ylLocation + 1] = 0;
-					Drawing.enemy_l++;
+					Drawing.enemyCount++;
 				}
 
 			}
@@ -148,7 +148,7 @@ public class Drawing extends JPanel {
 			g2d.clearRect(0, 0, 1000, 1000);
 			g2d.drawImage(stop, 100, 100, 300, 300, null);
 
-		} else if (Drawing.enemy_l >= 10) {
+		} else if (Drawing.enemyCount >= 10) {
 			g2d.clearRect(0, 0, 1000, 1000);
 			g2d.drawImage(win, 100, 100, 300, 300, null);
 		} else {
