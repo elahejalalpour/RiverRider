@@ -14,7 +14,6 @@
 package me.elahe.riverrider;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,8 +21,6 @@ public class Manager implements Runnable {
 
 	public int i;
 	public Map r;
-	public Drawing d;
-	public Graphics g;
 	public static int fuel;
 	public static int enemy;
 	public Frame f;
@@ -70,7 +67,7 @@ public class Manager implements Runnable {
 					System.out.println("you lost the game!!!!(enemy)");
 					break;
 				}
-				if (Drawing.enemyl >= 10) {
+				if (Drawing.enemy_l >= 10) {
 					System.out.println("you win the game");
 					break;
 				}

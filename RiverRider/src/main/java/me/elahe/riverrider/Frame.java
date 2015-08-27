@@ -102,7 +102,7 @@ public class Frame extends JFrame implements KeyListener, ActionListener {
 	}
 
 	public void setenemymissed() {
-		fa.setText("" + Drawing.enemyl);
+		fa.setText("" + Drawing.enemy_l);
 	}
 
 	@Override
